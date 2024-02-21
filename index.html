@@ -5,9 +5,28 @@
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
     // 👉 CHALLENGE 1
-    function profileActivation(profile, reason) {
+      function profileActivation(profile, reason) {
+  if (profile.active) {
+    profile.active = false;
+    profile.reason = reason;
+    return profile
+  } else if (!profile.active && reason === undefined) {
+    return "confirm status manually";
+  } else {
+   
+    profile.active = true;
+    delete profile.reason;
+    return profile;
+  }
+}
+    
+ 
+  
+    
+    
 
-    }
+
+    
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
