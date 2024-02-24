@@ -6,24 +6,35 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
       function profileActivation(profile, reason) {
-  if (profile.active) {
-    profile.active = false;
-    profile.reason = reason;
-    return profile
-  } else if (!profile.active && reason === undefined) {
-    return "confirm status manually";
-  } else {
-   
-    profile.active = true;
-    delete profile.reason;
-    return profile;
-  }
+
+        if (profile.active) {
+        if (!reason) {
+            return "confirm status manually";
+        } else {
+            profile.active = false;
+            profile.reason = reason;
+            return { active: false, reason: reason };
+        }
+    } else {
+        delete profile.reason;
+        profile.active = true;
+        return { active: true };
+    }
 }
+
+
+
+
+
+
+
+
+    
     
  
   
     
-    
+      
 
 
     
