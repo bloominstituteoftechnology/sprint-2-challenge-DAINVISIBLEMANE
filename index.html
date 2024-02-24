@@ -41,23 +41,100 @@
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
+      if (x < 1 || x > 3 || y < 1 || y > 3) {
+        return "invalid coordinates";
+    }
+
+    let square = grid[y - 1][x - 1];
+
+    if (square === "🟥") {
+        return "🟥 💀";
+    } else if (square === "🟦") {
+        return "🟦 🥳";
+    }
+
+
 
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-
+      for (let key in obj) {
+        if (key.length > 9) {
+            return "shorten all prop names to 9 chars or less";
+        }
     }
+    for (let key in obj) {
+        if (obj[key] === 0) {
+            obj[key] = false;
+        } else if (obj[key] === 1) {
+            obj[key] = true;
+        } else if (obj[key] === null) {
+            delete obj[key];
+        }
+    }
+
+    return obj;
+}
+
+let obj1 = {
+    keyZero: 0,
+    keyOne: 1,
+    keyNull: null,
+    keyTwo: 2
+};
+
+let result1 = booleanize(obj1);
+console.log(result1);
+
+
+
+      
+
+    
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      if (text === "" || forbidden.length === 0) {
+        return text;
+    }
+
+    let words = text.split(" ");
+
+     for (let i = 0; i < words.length; i++) {
+        
+        if (forbidden.includes(words[i])) {
+            
+            words[i] = "x".repeat(words[i].length);
+        }
+    }
+
+    
+    let result = words.join(" ");
+
+    return result;
+
+      
+
+
 
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-
+      if (num.length !== 10 || isNaN(num)) {
+        return "Invalid phone number";
     }
+
+    // Format the phone number as "(XXX) XXX-XXXX"
+    let formattedNumber = `(${num.slice(0, 3)}) ${num.slice(3, 6)}-${num.slice(6)}`;
+
+    return formattedNumber;
+}
+
+
+
+    
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
